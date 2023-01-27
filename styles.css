@@ -3,13 +3,13 @@
 }
 
 body {
-  height: 95vh;
+  height: 98vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#caclculator-body {
+#calculator-body {
   width: 450px;
   height: 700px;
   padding: 30px;
@@ -52,4 +52,32 @@ body {
   margin:0;
   padding: 0;
   background-color: #494f52;
+  transition: all 150ms ease-in-out;
+}
+.button-row button:hover {
+  transform: translateY(-3px);
+}
+.button-row button:active {
+  transform: translateY(0px);
+}
+
+.clear-button:hover {
+  background-color: #cf3737;
+}
+
+#memory-button:hover {
+  background-color: #c27222;
+}
+
+.operator-button:hover {
+  background-color: #396aa3;
+}
+
+.number-button:hover {
+  background-color: #818080;
+}
+
+#plinus-button:hover,
+#decimal-button:hover {
+  background-color: #559f38;
 }
