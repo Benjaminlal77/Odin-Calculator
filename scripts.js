@@ -31,6 +31,14 @@ function checkInput(e){
       result.textContent='-'+result.textContent;
     }
   }
+  else if (buttonPressed==='clear-button'){
+    if (e.target.value==='AC'){
+      result.textContent='';
+      memory.textContent='';
+    } else {
+      result.textContent=result.textContent.slice(0,-1);
+    }
+  }
 }
 function lastInputIsOperator(){
   return /[/x\-\+]/.test(memory.textContent.slice(-2));
