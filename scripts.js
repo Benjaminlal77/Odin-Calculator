@@ -60,6 +60,15 @@ function checkInput(e){
       result=result.slice(0,-1);
     }
   }
+
+  else if (buttonPressed==='memory-button'){
+    if (lastInputIsOperator()){
+      equation+=memory + ' ';
+      result='';
+    } else {
+      result=memory;
+    }
+  }
   resultNode.textContent=result;
   equationNode.textContent=equation;
 }
@@ -69,12 +78,13 @@ function lastInputIsOperator(){
 }
 function evaluate(){
   let equationArray=equation.split(' ');
-  equationArray.pop();
+  equationArray.pop()
   if (lastInputIsOperator()&&result===''){
     equationArray.pop();
-  } else {
+  } else if (result !== '') {
     equationArray.push(result);
   }
+  console.log(equationArray);
 
   equationArray=evalMultiAndDiv(equationArray);
   if(equationArray.length>1){return evalAddAndSub(equationArray);}
