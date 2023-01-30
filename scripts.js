@@ -2,13 +2,19 @@ const buttons = document.querySelectorAll('button');
 const equationNode = document.getElementById('equation');
 let equation='';
 const resultNode = document.getElementById('result');
-let result='';
+let result='',memory='';
+let evaluated=false;
 
 buttons.forEach(button=>button.addEventListener('click',checkInput));
 
 function checkInput(e){
   let buttonPressed = e.target.className;
   let input = e.target.value;
+  if (evaluated){
+    equation='';
+    result='';
+    evaluated=false;
+  }
   if (buttonPressed==='number-button'){
     result+=input;
   } 
@@ -17,18 +23,17 @@ function checkInput(e){
     if (input==='='){
       equation += result;
       result = evaluate().toString();
+      memory = result;
       if (lastInputIsOperator()){
         equation = equation.slice(0,-3);
       }
       equation += ' = ';
-      
+      evaluated=true;
     }else if (result!==''&&result!=='-'){
       equation += result + ' ' + input + ' ';
       result = '';
-    } else{
-      if (lastInputIsOperator()){
-        equation = equation.slice(0,-2)+input+' '
-      }
+    } else if (lastInputIsOperator()){
+      equation = equation.slice(0,-2)+input+' ';
     }
   }
   
