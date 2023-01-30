@@ -10,37 +10,40 @@
 </head>
 <body>
   <div id="calculator-body">
-    <div id="display"></div>
+    <div id="display">
+      <p id="memory"></p>
+      <p id="result"></p>
+    </div>
     <div id="buttons">
       <div class="button-row">
-        <button class="clear-button">AC</button>
-        <button class="clear-button">C</button>
-        <button id="memory-button">M</button>
-        <button class="operator-button">÷</button>
+        <button value="AC" class="clear-button">AC</button>
+        <button value="C" class="clear-button">C</button>
+        <button value="M" id="memory-button">M</button>
+        <button value="/" class="operator-button">÷</button>
       </div>
       <div class="button-row">
-        <button class="number-button">7</button>
-        <button class="number-button">8</button>
-        <button class="number-button">9</button>
-        <button class="operator-button">X</button>
+        <button value="7" class="number-button">7</button>
+        <button value="8" class="number-button">8</button>
+        <button value="9" class="number-button">9</button>
+        <button value="x" class="operator-button">X</button>
       </div>
       <div class="button-row">
-        <button class="number-button">4</button>
-        <button class="number-button">5</button>
-        <button class="number-button">6</button>
-        <button class="operator-button">-</button>
+        <button value="4" class="number-button">4</button>
+        <button value="5" class="number-button">5</button>
+        <button value="6" class="number-button">6</button>
+        <button value="-" class="operator-button">-</button>
       </div>
       <div class="button-row">
-        <button class="number-button">1</button>
-        <button class="number-button">2</button>
-        <button class="number-button">3</button>
-        <button class="operator-button">+</button>
+        <button value="1" class="number-button">1</button>
+        <button value="2" class="number-button">2</button>
+        <button value="3" class="number-button">3</button>
+        <button value="+" class="operator-button">+</button>
       </div>
       <div class="button-row">
-        <button id="plinus-button">+/-</button>
-        <button class="number-button">0</button>
-        <button id="decimal-button">.</button>
-        <button class="operator-button">=</button>
+        <button value="+/-" id="plinus-button">+/-</button>
+        <button value="0" class="number-button">0</button>
+        <button value="." id="decimal-button">.</button>
+        <button value="=" class="operator-button">=</button>
       </div>
     </div>
   </div>
