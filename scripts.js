@@ -10,7 +10,7 @@ function checkInput(e){
     result.textContent+=input;
   } 
   else if (buttonPressed==='operator-button'){
-    if (result.textContent!==''){
+    if (result.textContent!==''&&result.textContent!=='-'){
       memory.textContent += result.textContent + ' ' + input + ' ';
       result.textContent = '';
     } else {
@@ -20,7 +20,9 @@ function checkInput(e){
     }
   }
   else if (buttonPressed==='decimal-button'){
-    result.textContent+=input;
+    if (doesNotHaveDecimal()){
+      result.textContent+=input;
+    }
   }
   else if (buttonPressed==='plinus-button'){
     if (isNegative()){
@@ -32,6 +34,9 @@ function checkInput(e){
 }
 function lastInputIsOperator(){
   return /[/x\-\+]/.test(memory.textContent.slice(-2));
+}
+function doesNotHaveDecimal(){
+  return !/[.]/.test(result.textContent);
 }
 function isNegative(){
   return result.textContent.charAt(0)==='-';
