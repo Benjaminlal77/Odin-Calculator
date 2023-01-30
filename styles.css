@@ -34,14 +34,14 @@ body {
   justify-content: center;
 }
 
-#expression,
+#equation,
 #result {
   margin: 0;
   overflow: auto;
   flex: auto;
 }
 
-#expression {
+#equation {
   font-size: 23px;
   height: 25%;
 }
@@ -88,7 +88,7 @@ body {
   background-color: #cf3737;
 }
 
-#expression-button:hover {
+.memory-button:hover {
   background-color: #c27222;
 }
 
@@ -100,7 +100,7 @@ body {
   background-color: #818080;
 }
 
-#plinus-button:hover,
-#decimal-button:hover {
+.plinus-button:hover,
+.decimal-button:hover {
   background-color: #559f38;
 }

@@ -1,62 +1,74 @@
 const buttons = document.querySelectorAll('button');
-const expression = document.getElementById('expression');
-const result = document.getElementById('result');
+const equationNode = document.getElementById('equation');
+let equation='';
+const resultNode = document.getElementById('result');
+let result='';
+
 buttons.forEach(button=>button.addEventListener('click',checkInput));
 
 function checkInput(e){
   let buttonPressed = e.target.className;
   let input = e.target.value;
   if (buttonPressed==='number-button'){
-    result.textContent+=input;
+    result+=input;
   } 
 
   else if (buttonPressed==='operator-button'){
     if (input==='='){
-      result.textContent = evaluate();
-    }else if (result.textContent!==''&&result.textContent!=='-'){
-      expression.textContent += result.textContent + ' ' + input + ' ';
-      result.textContent = '';
+      equation += result;
+      result = evaluate().toString();
+      if (lastInputIsOperator()){
+        equation = equation.slice(0,-3);
+      }
+      equation += ' = ';
+      
+    }else if (result!==''&&result!=='-'){
+      equation += result + ' ' + input + ' ';
+      result = '';
     } else{
       if (lastInputIsOperator()){
-        expression.textContent = expression.textContent.slice(0,-2)+input+' '
+        equation = equation.slice(0,-2)+input+' '
       }
     }
   }
   
   else if (buttonPressed==='decimal-button'){
     if (doesNotHaveDecimal()){
-      result.textContent+=input;
+      result+=input;
     }
   }
   
   else if (buttonPressed==='plinus-button'){
     if (isNegative()){
-      result.textContent=result.textContent.slice(1);
+      result=result.slice(1);
     } else {
-      result.textContent='-'+result.textContent;
+      result='-'+result;
     }
   }
   
   else if (buttonPressed==='clear-button'){
     if (input==='AC'){
-      result.textContent='';
-      expression.textContent='';
+      result='';
+      equation='';
     } else {
-      result.textContent=result.textContent.slice(0,-1);
+      console.log(result);
+      result=result.slice(0,-1);
     }
   }
+  resultNode.textContent=result;
+  equationNode.textContent=equation;
 }
 
 function lastInputIsOperator(){
-  return /[/x\-\+]/.test(expression.textContent.slice(-2));
+  return /[/x\-\+]/.test(equation.slice(-2));
 }
 function evaluate(){
-  let equationArray=expression.textContent.split(' ');
+  let equationArray=equation.split(' ');
   equationArray.pop();
-  if (lastInputIsOperator()&&result.textContent===''){
+  if (lastInputIsOperator()&&result===''){
     equationArray.pop();
   } else {
-    equationArray.push(result.textContent);
+    equationArray.push(result);
   }
 
   equationArray=evalMultiAndDiv(equationArray);
@@ -94,9 +106,9 @@ function evalAddAndSub(equationArray){
 }
 
 function doesNotHaveDecimal(){
-  return !/[.]/.test(result.textContent);
+  return !/[.]/.test(result);
 }
 
 function isNegative(){
-  return result.textContent.charAt(0)==='-';
+  return result.charAt(0)==='-';
 }
