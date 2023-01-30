@@ -22,7 +22,17 @@ function checkInput(e){
   else if (buttonPressed==='decimal-button'){
     result.textContent+=input;
   }
+  else if (buttonPressed==='plinus-button'){
+    if (isNegative()){
+      result.textContent=result.textContent.slice(1);
+    } else {
+      result.textContent='-'+result.textContent;
+    }
+  }
 }
 function lastInputIsOperator(){
   return /[/x\-\+]/.test(memory.textContent.slice(-2));
+}
+function isNegative(){
+  return result.textContent.charAt(0)==='-';
 }
